@@ -1,0 +1,16 @@
+{
+  "name": "mysql-kafka-elk-sink",
+  "config": {
+  "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+  "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+  "value.converter.schemas.enable": "false",
+  "topics": "CALL_DATASETS,DEVICE_DATASETS,SERVICE_DATASETS",
+  "key.ignore": "true",
+  "schema.ignore": "true",
+  "type.name": "_doc",
+  "connection.url": "http://3.111.57.203:9200",
+  "connection.username": "elastic",
+  "connection.password": "changeme"
+}
+}

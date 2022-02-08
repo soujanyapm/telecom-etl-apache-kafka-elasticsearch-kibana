@@ -1,0 +1,17 @@
+# https://docs.confluent.io/kafka-connect-elasticsearch/current/overview.html
+# https://www.confluent.io/hub/confluentinc/kafka-connect-elasticsearch
+
+# topic name is equal to elk index name 
+dbserver2.inventory.meta
+
+
+steps:
+first install connector
+
+modify json file and put your topic name
+
+create index in elk and go to discover index and see your data
+
+# --------------------------elk cloud------------------
+pass=zEBpY6NeYNGNLQo5Q5Lp3WED
+uname=elastic

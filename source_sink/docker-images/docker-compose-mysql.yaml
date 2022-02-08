@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mysql:
+    image: debezium/example-mysql:0.9
+    restart: always
+    environment:
+      MYSQL_USER: 'mysqluser'
+      MYSQL_PASSWORD: 'mysqlpw'
+      MYSQL_ROOT_PASSWORD: 'debezium'
+    ports:
+      - '3000:3306'
+    expose:
+      - '3306'
+#     volumes:
+#       - my-db:/var/lib/mysql
+# volumes:
+#   my-db:

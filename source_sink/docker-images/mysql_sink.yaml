@@ -1,0 +1,50 @@
+docks:
+  https://docs.confluent.io/debezium-connect-mysql-source/current/overview.html
+# ---------------mysql installaion-------------------
+docker run -it --rm --name mysql \
+-p 4000:3306 \
+-e MYSQL_ROOT_PASSWORD=debezium \
+-e MYSQL_USER=mysqluser \
+-e MYSQL_PASSWORD=mysqlpw debezium/example-mysql:0.9
+
+username=mysqluser
+pass=mysqlpw
+
+# ---------------------------------
+open database container
+
+docker exec -it c-id bash
+> mysql -u mysqluser -p
+>mysqlpw (pass)
+
+
+# Create the file register-mysql.json to store the following connector configuration:
+
+{
+ "name": "inventory-connector",
+ "config": {
+     "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+     "tasks.max": "1",
+     "database.hostname": "localhost",
+     "database.port": "3000",
+     "database.user": "debezium",
+     "database.password": "dbz",
+     "database.server.id": "184054",
+     "database.server.name": "dbserver1",
+     "database.whitelist": "inventory",
+     "database.history.kafka.bootstrap.servers": "localhost:9092",
+     "database.history.kafka.topic": "schema-changes.inventory"
+     }
+ }
+
+# upload this file into kafka connector
+# you can create new table in this database
+CREATE TABLE meta (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+insert into meta(PersonID,LastName,FirstName,Address,City) values(1,"fwef","wewe","ewfjwekf","wefkjwe");
